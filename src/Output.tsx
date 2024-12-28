@@ -18,6 +18,7 @@ export const Output = () => {
   return (
     <div className="w-2/5 font-sans">
       <Markdown
+
         components={{
           h1: ({ children }) => (
             <h1 className="text-4xl font-bold mt-6 mb-2">{children}</h1>
@@ -38,7 +39,7 @@ export const Output = () => {
             <h6 className="text-base font-medium mt-1 mb-1">{children}</h6>
           ),
           p: ({ children }) => (
-            <p className="text-base leading-relaxed mb-2">{children}</p>
+            <p className="text-base leading-relaxed mb-2 min-h-[1em] before:content-['\00a0']">{children}</p>
           ),
           ul: ({ children }) => (
             <ul className="list-disc ml-5 mb-2">{children}</ul>
