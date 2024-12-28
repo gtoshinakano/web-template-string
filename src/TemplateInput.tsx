@@ -7,7 +7,7 @@ export const TemplateInput = () => {
   const {input, variables, singleChange} = useTemplateStore()
 
   const handleInputChange: ChangeEventHandler<HTMLTextAreaElement> = ({target}) => {
-    singleChange("input", target.value)
+    singleChange("input", target.value.replace(/\n/g, '  \n'))
     const vars = extractTemplateVariables(target.value)
     vars.forEach(key => {
       variables.set(key, variables.get(key) ?? "")
