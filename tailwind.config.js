@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Times New Roman', ...defaultTheme.fontFamily.sans],
+        serif: ['Times New Roman', ...defaultTheme.fontFamily.serif],
       },
     },
   },

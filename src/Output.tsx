@@ -7,7 +7,7 @@ export const Output = () => {
   let resultString = "";
   try {
     // Use template literals dynamically
-    resultString = input.replace(/\$\{(.*?)\}/g, (_, key) => {
+    resultString = input.replace(/\n/g, '  \n').replace(/\$\{(.*?)\}/g, (_, key) => {
       return variables.get(key.trim()) ?? `\${${key}}`;
     });
   } catch (error) {
@@ -16,9 +16,8 @@ export const Output = () => {
   }
 
   return (
-    <div className="w-2/5 font-sans">
+    <div className="w-5/12 font-serif overflow-y-scroll">
       <Markdown
-
         components={{
           h1: ({ children }) => (
             <h1 className="text-4xl font-bold mt-6 mb-2">{children}</h1>

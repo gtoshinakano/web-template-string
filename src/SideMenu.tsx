@@ -8,7 +8,7 @@ export const SideMenu = () => {
   const varItems =Array.from(variables.entries()).filter(([key]) => currentKeys.includes(key)) ?? []
 
   return (<div className="flex flex-col grow">
-    <div className="bg-blue-300 p-1.5">
+    <div className="p-1.5">
       {varItems.map(([key, value]) => <ValueInput key={key} value={value} varKey={key} />)}
     </div>
   </div>)

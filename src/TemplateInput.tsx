@@ -7,8 +7,9 @@ export const TemplateInput = () => {
   const {input, variables, singleChange} = useTemplateStore()
 
   const handleInputChange: ChangeEventHandler<HTMLTextAreaElement> = ({target}) => {
-    singleChange("input", target.value.replace(/\n/g, '  \n'))
-    const vars = extractTemplateVariables(target.value)
+    const { value } = target
+    singleChange("input", value)
+    const vars = extractTemplateVariables(value)
     vars.forEach(key => {
       variables.set(key, variables.get(key) ?? "")
     })
@@ -17,7 +18,7 @@ export const TemplateInput = () => {
    
   }
   
-  return (<div className="w-2/5">
+  return (<div className="w-6/12">
     <textarea className="h-full w-full p-1" placeholder="Input Text Template" onChange={handleInputChange} value={input} />
   </div>)
 }
