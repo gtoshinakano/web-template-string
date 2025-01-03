@@ -12,7 +12,6 @@ export const useTemplateStore = create<TemplateTextStore>()(
 
     (set) => ({
       input: "",
-      output: "",
       variables: new Map<string, string>(),
       currentKeys: [],
       singleChange: (key, value) =>

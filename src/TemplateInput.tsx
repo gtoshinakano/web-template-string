@@ -18,7 +18,7 @@ export const TemplateInput = () => {
    
   }
   
-  return (<div className="w-6/12">
+  return (<div className="w-6/12 grow">
     <textarea className="h-full w-full p-1" placeholder="Input Text Template" onChange={handleInputChange} value={input} />
   </div>)
 }
