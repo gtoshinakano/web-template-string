@@ -1,0 +1,22 @@
+import { TfiSave, TfiLayoutMediaOverlayAlt } from "react-icons/tfi";
+import { useTemplateStore } from "./store/TemplateStore";
+
+export const EditorMenu = ({ textareaRef}: {textareaRef: React.RefObject<HTMLTextAreaElement>}) => {
+
+  const { singleChange, input } = useTemplateStore()
+
+  const handleAddNewLine = () => {
+    const cursor = textareaRef.current ? textareaRef.current.selectionStart : input.length
+    singleChange("input", input.slice(0, cursor) + "\n&nbsp;\n" + input.slice(cursor))
+    if(textareaRef.current) textareaRef.current.focus()
+  }
+
+  return <div className="absolute right-0 p-2 flex gap-1.5 ">
+    <button className=" flex px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 gap-3" onClick={handleAddNewLine}>
+      <TfiLayoutMediaOverlayAlt className="m-auto" /> <span className="m-auto text-sm"> Add new line</span>
+    </button>
+    <button className=" flex px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 gap-3">
+      <TfiSave className="m-auto" /> <span className="m-auto text-sm">Save template</span>
+    </button>
+  </div>
+}

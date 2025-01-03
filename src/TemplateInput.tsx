@@ -1,8 +1,10 @@
-import { ChangeEventHandler } from "react"
+import { ChangeEventHandler, useRef } from "react"
 import { useTemplateStore } from "./store/TemplateStore"
+import { EditorMenu } from "./EditorMenu"
 
 export const TemplateInput = () => {
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const {input, variables, singleChange} = useTemplateStore()
 
@@ -18,8 +20,9 @@ export const TemplateInput = () => {
    
   }
   
-  return (<div className="w-6/12 grow">
-    <textarea className="h-full w-full p-1" placeholder="Input Text Template" onChange={handleInputChange} value={input} />
+  return (<div className="w-6/12 grow relative">
+    <EditorMenu textareaRef={textareaRef} />
+    <textarea ref={textareaRef} className="h-full w-full p-1" placeholder="Input Text Template" onChange={handleInputChange} value={input} />
   </div>)
 }
 

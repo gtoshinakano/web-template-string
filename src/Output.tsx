@@ -16,7 +16,7 @@ export const Output = () => {
   }
 
   return (
-    <div className="w-5/12 font-serif overflow-y-scroll">
+    <div className="w-5/12 font-serif p-2 overflow-y-scroll">
       <Markdown
         components={{
           h1: ({ children }) => (
