@@ -1,4 +1,4 @@
-import { TfiSave, TfiLayoutMediaOverlayAlt } from "react-icons/tfi";
+import { TfiSave, TfiLayoutMediaOverlayAlt, TfiShortcode } from "react-icons/tfi";
 import { useTemplateStore } from "./store/TemplateStore";
 
 export const EditorMenu = ({ textareaRef}: {textareaRef: React.RefObject<HTMLTextAreaElement>}) => {
@@ -11,7 +11,16 @@ export const EditorMenu = ({ textareaRef}: {textareaRef: React.RefObject<HTMLTex
     if(textareaRef.current) textareaRef.current.focus()
   }
 
+  const handleAddNewVariable = () => {
+    const cursor = textareaRef.current ? textareaRef.current.selectionStart : input.length
+    singleChange("input", input.slice(0, cursor) + "${variable}" + input.slice(cursor))
+    if(textareaRef.current) textareaRef.current.focus()
+  }
+
   return <div className="absolute right-0 p-2 flex gap-1.5 ">
+    <button className=" flex px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 gap-3" onClick={handleAddNewVariable}>
+      <TfiShortcode className="m-auto" /> <span className="m-auto text-sm"> Add variable</span>
+    </button>
     <button className=" flex px-3 py-2 rounded bg-slate-200 hover:bg-slate-300 gap-3" onClick={handleAddNewLine}>
       <TfiLayoutMediaOverlayAlt className="m-auto" /> <span className="m-auto text-sm"> Add new line</span>
     </button>
