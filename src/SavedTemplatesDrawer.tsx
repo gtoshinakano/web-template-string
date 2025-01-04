@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TfiViewListAlt, TfiClose, TfiTrash } from "react-icons/tfi";
+import { TfiViewListAlt, TfiClose, TfiTrash, TfiDownload } from "react-icons/tfi";
 import {
   getTemplateTitle,
   useSavedTemplateStore,
@@ -23,10 +23,29 @@ export const SavedTemplatesDrawer = () => {
     setIsOpen(false)
   }
 
+  const handleDownloadTemplates = () => {
+    for(const [key, value] of Object.entries(savedTemplates)){
+      const blob = new Blob([value], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${key}.txt`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+  }
+
   return (
     <>
       <button
-        className="px-2 py-2.5 bg-yellow-500 text-lg rounded"
+        className="px-3 py-2.5 bg-yellow-500 text-lg rounded flex gap-3"
+        onClick={() => handleDownloadTemplates()}
+      >
+        <TfiDownload /> 
+        <span className="text-xs my-auto">Download All Templates</span>
+      </button>
+      <button
+        className="px-2 py-2.5 bg-yellow-500 text-lg rounded aspect square"
         onClick={() => setIsOpen(!isOpen)}
       >
         <TfiViewListAlt />

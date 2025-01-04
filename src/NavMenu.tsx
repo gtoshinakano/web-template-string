@@ -16,7 +16,7 @@ export const NavMenu = () => {
         placeholder="Untitled"
       />
     </div> 
-    <div className="w-1/3 p-3 font font-semibold text-right"><SavedTemplatesDrawer /></div> 
+    <div className="w-1/3 p-3 font font-semibold text-right flex gap-2 justify-end"><SavedTemplatesDrawer /></div> 
   </nav>
 }
 
